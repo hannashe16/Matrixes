@@ -10,7 +10,7 @@ namespace Matrix
             Size = size;
         }
 
-        public override int this[int i, int j] // индексатор обеспечивает доступ к элементу массива, т о что из 2х индексов получается 1 индекс
+        public override T this[int i, int j] // индексатор обеспечивает доступ к элементу массива, т о что из 2х индексов получается 1 индекс
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Matrix
                 }
                 else
                 {
-                    return 0;
+                    return default(T);
                 }                
             }
             set => MatrixArray[i * Size + j] = value;            

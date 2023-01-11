@@ -39,14 +39,10 @@ namespace Matrix
         /// <param name="j"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public virtual int this[int i, int j] // индексатор обеспечивает доступ к элементу массива, т. о. что из 2х индексов получается 1 индекс
+        public virtual T this[int i, int j] // индексатор обеспечивает доступ к элементу массива, т. о. что из 2х индексов получается 1 индекс
         {
-            //get => MatrixArray[i * Size + j];
-            get
-            {
-                var index = MatrixArray[i * Size + j];
-                return index;
-            }
+            get => MatrixArray[i * Size + j];
+            
             set 
             {
                 if (i < 0 || j < 0)

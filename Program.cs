@@ -15,7 +15,7 @@ namespace Matrix
                 squareMatrix[1, 2] = 6; // set
                 int a00 = squareMatrix[0, 0]; // вызывается get часть индексатора
                 int a01 = squareMatrix[0, 1];               
-                DiagonalMatrix<int> diagonalMatrix = new DiagonalMatrix<int>(diagonalMatrixElements, 3);
+                DiagonalMatrix<int> diagonalMatrix = new DiagonalMatrix<int>(diagonalMatrixElements, -3);
                 Console.WriteLine(diagonalMatrix);
             }
             catch (Exception ex)
