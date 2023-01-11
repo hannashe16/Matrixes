@@ -7,16 +7,15 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
-            List<int> listOfSquareMatrixElements = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            //int[] matrixSquare = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            List<int> listOfDiagonalMatrixElements = new List<int>() { 1, 0, 0, 0, 1, 0, 0, 0, 3 };
+            int[] squareMatrixElements = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] diagonalMatrixElements = { 1, 0, 0, 0, 1, 0, 0, 0, 3 };
             try
             {               
-                Matrix<int> squareMatrix = new Matrix<int>(listOfSquareMatrixElements, 3);
+                Matrix<int> squareMatrix = new Matrix<int>(squareMatrixElements, 3);
                 squareMatrix[1, 2] = 6; // set
                 int a00 = squareMatrix[0, 0]; // вызывается get часть индексатора
                 int a01 = squareMatrix[0, 1];               
-                DiagonalMatrix<int> diagonalMatrix = new DiagonalMatrix<int>(listOfDiagonalMatrixElements, 3);
+                DiagonalMatrix<int> diagonalMatrix = new DiagonalMatrix<int>(diagonalMatrixElements, 3);
                 Console.WriteLine(diagonalMatrix);
             }
             catch (Exception ex)

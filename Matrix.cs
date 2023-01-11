@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace Matrix
 {
     internal class Matrix<T>
-    {
-        public List<int> MatrixArray { get; set; }
+    {       
+        public T[] MatrixArray { get; set; }
         int _size;
         /// <summary>
         /// Exceptions: Size is negative or equals 0, not allowed
@@ -26,7 +26,7 @@ namespace Matrix
             }
         }      
         
-        public Matrix(List<int> matrixArray, int size) 
+        public Matrix(T[] matrixArray, int size) 
         {          
             MatrixArray = matrixArray;
             Size = size;
@@ -41,7 +41,12 @@ namespace Matrix
         /// <exception cref="Exception"></exception>
         public virtual int this[int i, int j] // индексатор обеспечивает доступ к элементу массива, т. о. что из 2х индексов получается 1 индекс
         {
-            get => MatrixArray[i * Size + j];
+            //get => MatrixArray[i * Size + j];
+            get
+            {
+                var index = MatrixArray[i * Size + j];
+                return index;
+            }
             set 
             {
                 if (i < 0 || j < 0)
