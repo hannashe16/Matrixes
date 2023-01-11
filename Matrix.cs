@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Matrix
 {
     internal class Matrix
     {
-        public int[] MatrixArray { get; set; }
-
+        public List<int> MatrixArray { get; set; }
         int _size;
         /// <summary>
         /// Exceptions: Size is negative or equals 0, not allowed
@@ -26,7 +26,7 @@ namespace Matrix
             }
         }      
         
-        public Matrix(int[] matrixArray, int size) 
+        public Matrix(List<int> matrixArray, int size) 
         {          
             MatrixArray = matrixArray;
             Size = size;

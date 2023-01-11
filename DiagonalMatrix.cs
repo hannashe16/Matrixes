@@ -1,8 +1,10 @@
-﻿namespace Matrix
+﻿using System.Collections.Generic;
+
+namespace Matrix
 {
     internal class DiagonalMatrix : Matrix
     {     
-        public DiagonalMatrix(int[] matrixArray, int size) : base (matrixArray, size)
+        public DiagonalMatrix(List<int> matrixArray, int size) : base (matrixArray, size)
         {
             MatrixArray = matrixArray;
             Size = size;
