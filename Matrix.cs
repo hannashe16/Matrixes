@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Matrix
 {
-    internal class Matrix
+    internal class Matrix<T>
     {
         public List<int> MatrixArray { get; set; }
         int _size;

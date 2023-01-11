@@ -2,7 +2,7 @@
 
 namespace Matrix
 {
-    internal class DiagonalMatrix : Matrix
+    internal class DiagonalMatrix<T> : Matrix<T>
     {     
         public DiagonalMatrix(List<int> matrixArray, int size) : base (matrixArray, size)
         {
