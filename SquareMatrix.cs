@@ -5,8 +5,8 @@ namespace Matrix
 
     internal class SquareMatrix<T>
     {
-        public delegate void Change(T oldValue, T newValue, int i, int j); // объявление делегата, проверка на сигнатуру
-        public event Change ChangedHandler; // ивент, список делегатов типа Change
+        public delegate void ChangedHandler(T oldValue, T newValue, int i, int j);
+        public event ChangedHandler Changed; // ивент типа делегата ChangedHandler
         public T[] MatrixArray { get; set; }
         int _size;
         /// <summary>
@@ -70,11 +70,8 @@ namespace Matrix
                 }
                 else 
                 {                                       
-                    MatrixArray[i * Size + j] = value;
-                    if (ChangedHandler != null)
-                    {
-                        ChangedHandler(MatrixArray[i * Size + j], value, i, j); // вызов ивента, регистрируем событие
-                    }
+                    MatrixArray[i * Size + j] = value;                   
+                    Changed?.Invoke(MatrixArray[i * Size + j], value, i, j);
                 }
             }           
         }      

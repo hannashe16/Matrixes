@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using static Matrix.SquareMatrix<T>;
 
 namespace Matrix
 {
@@ -30,11 +29,25 @@ namespace Matrix
                 SquareMatrix<int> squareMatrix1 = new SquareMatrix<int>(2);
                 SquareMatrix<int> squareMatrix = new SquareMatrix<int>(squareMatrixElements, 3);
 
-                squareMatrix1.ChangedHandler += IsValueChanged; // регистрируем метод IsValueChanged в событии ChangedHandler
+                squareMatrix1.Changed += DisplayMessageIfValueIsChanged; // вызываем обработчик события DisplayMessageIfValueIsChanged в событии Changed
 
-                squareMatrix1[0, 0] = 133; // вызывается set часть индексатора               
+                squareMatrix1[0, 0] = 133; // вызывается set часть индексатора
+                squareMatrix1.Changed -= delegate (int oldValue, int newValue, int i, int j) // удаление регистрации события анонимным методом
+                {
+                    if (oldValue != newValue)
+                    {
+                        Console.WriteLine("Value was changed");
+                    }
+                };
                 squareMatrix1[0, 1] = 2;
-                squareMatrix1[1, 0] = 3;
+                squareMatrix1[1, 0] = 333; 
+                squareMatrix1.Changed += (oldValue, newValue, i, j) =>  // применяем лямбда выражение для определения обработчика события
+                {
+                    if (oldValue != newValue)
+                    {
+                        Console.WriteLine("Value was changed");
+                    }
+                };
                 squareMatrix1[1, 1] = 4;
                 Console.WriteLine(squareMatrix1);
                 int a00 = squareMatrix[0, 0]; // вызывается get часть индексатора
@@ -43,7 +56,7 @@ namespace Matrix
                 DiagonalMatrix<int> diagonalMatrix1 = new DiagonalMatrix<int>(2);
                 DiagonalMatrix<int> diagonalMatrix = new DiagonalMatrix<int>(diagonalMatrixElements, 3);
 
-                diagonalMatrix1[0, 0] = 11; //set
+                diagonalMatrix1[0, 0] = 11; //set               
                 diagonalMatrix1[0, 1] = 111111111;
                 diagonalMatrix1[1, 0] = 222222222;
                 diagonalMatrix1[1, 1] = 12;
@@ -63,7 +76,7 @@ namespace Matrix
             //resultList = ListByCondition(squareMatrixElements1, data => data > 4);
         }
 
-        public static void IsValueChanged(int oldValue, int newValue, int i, int j) //обработчик события
+        public static void DisplayMessageIfValueIsChanged(int oldValue, int newValue, int i, int j) //обработчик события
         {
             if (oldValue != newValue)
             {
