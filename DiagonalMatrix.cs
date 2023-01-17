@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
-
-namespace Matrix
+﻿namespace Matrix
 {
-    internal class DiagonalMatrix<T> : Matrix<T>
+    internal class DiagonalMatrix<T> : SquareMatrix<T>
     {     
         public DiagonalMatrix(T[] matrixArray, int size) : base (matrixArray, size)
         {
             MatrixArray = matrixArray;
+            Size = size;
+        }
+
+        public DiagonalMatrix(int size)// : base(size)
+        {
+            MatrixArray = new T[size];                                    
             Size = size;
         }
 
@@ -16,14 +20,14 @@ namespace Matrix
             {
                 if (i == j)
                 {
-                    return MatrixArray[i * Size + j];
+                    return MatrixArray[i];
                 }
                 else
                 {
                     return default(T);
                 }                
-            }
-            set => MatrixArray[i * Size + j] = value;            
+            }           
+            set => MatrixArray[i] = value;          
         }
     }
 }
